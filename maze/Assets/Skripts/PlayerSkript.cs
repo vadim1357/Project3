@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerSkript : MonoBehaviour
 {
+    private void Awake()
+    {
+        Self = this;
+    }
+    public static PlayerSkript Self { get; private set; }
     public Rigidbody rb;
      Vector3 directionX = new Vector3(1, 0, 0);
      Vector3 directionZ = new Vector3(0, 0, 1);
