@@ -6,6 +6,8 @@ using System.Linq;
 
 public class FileRead : MonoBehaviour
 {
+    public ConfigLevels config;
+    public static int num = 0;
     public CellScript[,] helper;
     public CellScript prefab;
     public MeshRenderer road;
@@ -14,13 +16,14 @@ public class FileRead : MonoBehaviour
     List<int> pointPositionI = new List<int>();
     List<int> pointPositionJ = new List<int>();
 
-
+    
 
 
     void Start()
     {
        
-        var fileLines = File.ReadLines("C:\\MyPrograms/GitHub/Project3/maze/maze.txt");
+        var fileLines = File.ReadLines(config.PathLevel(num));
+        
         var fileLinesArray = fileLines.ToArray();
         var sizeLine = fileLinesArray[0].Split(' ');
         var v = int.Parse(sizeLine[0]);
@@ -45,13 +48,40 @@ public class FileRead : MonoBehaviour
             }
         }
 
-        //Queue(playerPosX, playerPosZ);
+        //Queue((int)PlayerSkript.Self.transform.position.x, (int)PlayerSkript.Self.transform.position.z);
     }
 
 
     private void Update()
     {
-        Queue((int)PlayerSkript.Self.transform.position.x, (int)PlayerSkript.Self.transform.position.z);
+        int pointI = (int)(PlayerSkript.Self.transform.position.x + 0.5f);
+        int pointJ = (int)(PlayerSkript.Self.transform.position.z + 0.5f);
+
+        if (playerPosX != pointI || playerPosZ != pointJ)
+        {
+            for (int a = 0; a <= pointPositionI.Count - 1; a++)
+            {
+                helper[pointPositionI[a], pointPositionJ[a]].ClearWay();
+            }
+            pointPositionI.Clear();
+            pointPositionJ.Clear();
+
+            Queue(pointI, pointJ);
+
+            
+
+
+
+            playerPosX = pointI;
+            playerPosZ = pointJ;
+            
+        }
+        
+
+        
+
+
+
     }
 
 

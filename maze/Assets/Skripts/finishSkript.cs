@@ -8,6 +8,7 @@ public class finishSkript : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerTag")
         {
+            FileRead.num++;
             Application.LoadLevel(Application.loadedLevel);
         }
     }
