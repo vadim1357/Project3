@@ -3,7 +3,12 @@ guid: 6913328fca884a6448f93aa14ea27a34
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - roadToFinish: {fileID: 5474847552706503210, guid: 3adafc660a91aeb49a7a1033b8911ff1, type: 3}
+  - wall: {instanceID: 0}
+  - player: {instanceID: 0}
+  - finish: {instanceID: 0}
+  - road: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
